@@ -42,7 +42,7 @@ def upload_image():
     if file and allowed_file(file.filename):
         # print("alowed")
         # pictures = knnRTree(12800, kvalue, file)
-        pictures = find_closest_match(file, kvalue, 12800, typesearch)
+        pictures = find_closest_match(file, kvalue, typesearch)
         print(pictures)
         json_msg = json.dumps(pictures)
         return Response(json_msg, status=201, mimetype="application/json")
@@ -79,12 +79,12 @@ def upload_image():
 #     '''
 
 
-def find_closest_match(file_stream, k, size, typeserach):
+def find_closest_match(file_stream, k, typeserach):
 
     if(int(typeserach) == 1):
-        pictures = knnRTree(size, int(k), file_stream)
+        pictures = knnRTree(int(k), file_stream)
     elif(int(typeserach) == 2):
-        pictures = RangeRTree(size, float(k), file_stream)
+        pictures = RangeRTree(float(k), file_stream)
     else:
         pictures = []
     return pictures

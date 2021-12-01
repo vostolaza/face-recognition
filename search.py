@@ -30,6 +30,9 @@ def knnRTree(k, image):
     if not len(q):
         return []
 
+    if k > 20:
+        k = 20
+
     lres = list(idx.nearest(coordinates=q, num_results=k))
     res = []
     for x in lres:
@@ -60,8 +63,12 @@ def RangeRTree(r, image):
     lres = [n.id for n in idx.intersection(bounds, objects=True)]
 
     res = []
+    count = 0
     for x in lres:
         line = json.loads(linecache.getline(
             f"Sequential.json", x+1))
         res.append(line[0])
+        count += 1
+        if count > 20:
+            break
     return res
