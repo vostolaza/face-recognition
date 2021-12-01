@@ -26,6 +26,13 @@ pip3 install face_recognition
 pip3 install pandas
 pip3 install flask
 ```
+## 🛠️ Armar el árbol
+
+⚠️ Se van a indexar ~13k imágenes, este proceso tomará unos minutos.
+```
+python3 build.py
+```
+
 
 ## ▶️ Ejecutar servidor
 
